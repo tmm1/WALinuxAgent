@@ -2229,6 +2229,7 @@ def CreateAccount(user, password, expiration, thumbprint):
     and sudo permissions.
     Returns None if successful, error string on failure.
     """
+    return None
     userentry = None
     try:
         userentry = pwd.getpwnam(user)
