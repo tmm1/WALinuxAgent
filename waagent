@@ -4328,8 +4328,10 @@ class OvfEnv(object):
         if self.ComputerName == None :
             return "Error: Hostname missing"
         error=WaAgent.EnvMonitor.SetHostName(self.ComputerName)
-        return None
         if error: return error
+        while not WaAgent.EnvMonitor.IsHostnamePublished():
+            time.sleep(1)
+        return None
         if self.DisableSshPasswordAuthentication:
             filepath = "/etc/ssh/sshd_config"
             # Disable RFC 4252 and RFC 4256 authentication schemes.
