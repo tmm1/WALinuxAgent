@@ -2229,7 +2229,6 @@ def CreateAccount(user, password, expiration, thumbprint):
     and sudo permissions.
     Returns None if successful, error string on failure.
     """
-    return None
     userentry = None
     try:
         userentry = pwd.getpwnam(user)
@@ -4328,6 +4327,7 @@ class OvfEnv(object):
         if self.ComputerName == None :
             return "Error: Hostname missing"
         error=WaAgent.EnvMonitor.SetHostName(self.ComputerName)
+        return None
         if error: return error
         if self.DisableSshPasswordAuthentication:
             filepath = "/etc/ssh/sshd_config"
