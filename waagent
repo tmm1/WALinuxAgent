@@ -442,6 +442,7 @@ class AbstractDistro(object):
         Run("ifdown " + iface + " && ifup " + iface)
 
     def CreateAccount(self,user, password, expiration, thumbprint):
+        return None
         return CreateAccount(user, password, expiration, thumbprint)
     
     def DeleteAccount(self,user):
@@ -1083,6 +1084,7 @@ class CoreOSDistro(AbstractDistro):
         and sudo permissions.
         Returns None if successful, error string on failure.
         """
+        return None
         userentry = None
         try:
             userentry = pwd.getpwnam(user)
@@ -1545,6 +1547,7 @@ class fedoraDistro(redhatDistro):
         self.installAgentServiceScriptFiles()
 
     def CreateAccount(self, user, password, expiration, thumbprint):
+        return None
         super(fedoraDistro, self).CreateAccount(user, password, expiration, thumbprint)
         Run('/sbin/usermod ' + user + ' -G wheel')
 
@@ -1825,6 +1828,7 @@ class FreeBSDDistro(AbstractDistro):
         and sudo permissions.
         Returns None if successful, error string on failure.
         """
+        return None
         userentry = None
         try:
             userentry = pwd.getpwnam(user)
